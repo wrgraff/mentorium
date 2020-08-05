@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve && gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp"
   },
   "keywords": [],
   "author": "",
@@ -26,3 +25,4 @@
     "gulp-webp": "^4.0.1"
   }
 }
+g
