@@ -1,0 +1,15 @@
+.logo {
+    display: flex;
+
+    color: $gray-700-color;
+
+    font-size: 24px;
+
+    &:hover {
+        color: $primary-color;
+    }
+}
+
+.logo__icon {
+    margin-right: 10px;
+}

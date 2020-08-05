@@ -1,0 +1,28 @@
+.page__body {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    min-height: 100vh;
+    padding: 32px;
+
+    font-family: $font-family, sans-serif;
+    line-height: 1.5;
+}
+
+.page__header {
+    width: 100%;
+    max-width: $page-max-width;
+    margin: 0 auto 52px;
+}
+
+.page__main {
+    width: 100%;
+    max-width: $page-max-width;
+    margin: 0 auto 32px;
+}
+
+.page__footer {
+    width: 100%;
+    max-width: $page-max-width;
+    margin: auto auto 0;
+}

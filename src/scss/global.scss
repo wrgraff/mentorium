@@ -1,0 +1,60 @@
+a {
+    color: $primary-color;
+
+    text-decoration: none;
+
+    transition: color 200ms;
+
+    &:not([class]) {
+        border-bottom: 1px solid;
+    }
+
+    &:hover {
+        color: $secondary-color;
+    }
+
+    &:focus {
+        @include outline;
+    }
+}
+
+p {
+    margin: 0 0 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 16px;
+
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 26px;
+
+    @include breakpoint(medium) {
+        font-size: 36px;
+    }
+}
+
+h2 {
+    font-size: 23px;
+
+    @include breakpoint(medium) {
+        font-size: 32px;
+    }
+}
+
+h3 {
+    font-size: 20px;
+
+    @include breakpoint(medium) {
+        font-size: 24px;
+    }
+}

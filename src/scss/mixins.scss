@@ -1,0 +1,70 @@
+@mixin outline($inset: false) {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: rgba($primary-color, .5);
+
+    @if ($inset == 'inset') {
+        outline-offset: -2px;
+    } @else {
+        outline-offset: 2px;
+    }
+}
+
+@mixin breakpoint($props) {
+    $breakpoint: nth($props, 1);
+    $direction: if(length($props) > 1, nth($props, 2), false);
+
+    @if ($direction == down) {
+        @if type-of($breakpoint) == 'string' {
+            @if (map-get-next($breakpoints, $breakpoint)) {
+                @media screen and (max-width: map-get-next($breakpoints, $breakpoint)) {
+                    @content;
+                }
+            } @else {
+                @warn 'breakpoint "#{$props}" is not make any sense because it cover all breakpoints';
+            }
+        } @else {
+            @media screen and (max-width: $breakpoint) {
+                @content;
+            }
+        }
+    } @else {
+        @if type-of($breakpoint) == 'string' {
+            @if ($breakpoint == small) {
+                @content;
+            } @else if (map-get($breakpoints, $breakpoint)) {
+                @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+                    @content;
+                }
+            } @else {
+                @warn 'breakpoint "#{$props}" is not defined in $breakpoints variables';
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint) {
+                @content;
+            }
+        }
+    }
+}
+
+@function map-get-next($map, $key) {
+    // Store the keys of the map as a list
+    $values: map-keys($map);
+    $i: 0;
+
+    // If the Key exists,
+    // get the index of the key within the map and add 1 to it for the next breakpoint in the map
+    @if (map-has-key($map, $key)) {
+        $i: index($values, $key) + 1;
+    }
+
+    @if ($i > length($map) or $i == 0) {
+        // If the key doesn't exist,
+        // or it's the last key in the map,
+        // return null
+        @return null;
+    } @else {
+        // Otherwise, return the value
+        @return map-get($map, nth($values, $i));
+    }
+}
