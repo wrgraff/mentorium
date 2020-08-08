@@ -55,7 +55,7 @@ const img = () => {
 exports.img = img;
 
 const fonts = () => {
-    return gulp.src('src/fonts/**/*{woff,woff2}')
+    return gulp.src('src/fonts/**/*.woff2')
         .pipe(gulp.dest('dist/fonts'))
         .pipe(browserSync.stream());
 };

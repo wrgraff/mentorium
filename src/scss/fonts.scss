@@ -13,14 +13,16 @@ $unicode-ranges: (
             font-weight: $font-weight;
             font-style: $font-style;
             font-display: swap;
-            src:
-                url('#{$file-path}-#{$range}.woff2') format('woff2'),
-                url('#{$file-path}-#{$range}.woff') format('woff');
+            src: url('#{$file-path}-#{$range}.woff2') format('woff2');
             unicode-range: $glyphs;
         }
     }
 }
 
 @include font-face($font-family, '../fonts/ubuntu-regular', 400, normal);
+@include font-face($font-family, '../fonts/ubuntu-italic', 400, italic);
+@include font-face($font-family, '../fonts/ubuntu-medium', 500, normal);
+@include font-face($font-family, '../fonts/ubuntu-medium-italic', 500, italic);
 @include font-face($font-family, '../fonts/ubuntu-light', 300, normal);
+@include font-face($font-family, '../fonts/ubuntu-light-italic', 300, italic);
 @include font-face($font-family-monospace, '../fonts/ubuntu-mono-regular', 400, normal);
