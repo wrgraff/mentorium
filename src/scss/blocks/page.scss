@@ -7,12 +7,30 @@
 
     font-family: $font-family, sans-serif;
     line-height: 1.5;
+
+    @include breakpoint(medium) {
+        padding-right: 48px;
+        padding-left: 48px;
+    }
+
+    @include breakpoint(large) {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
 }
 
 .page__header {
     width: 100%;
     max-width: $page-max-width;
-    margin: 0 auto 52px;
+    margin: 0 auto 48px;
+
+    @include breakpoint(medium) {
+        margin-bottom: 52px;
+    }
+
+    @include breakpoint(large) {
+        margin-bottom: 64px;
+    }
 }
 
 .page__main {

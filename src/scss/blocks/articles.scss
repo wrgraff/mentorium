@@ -1,10 +1,17 @@
 .articles {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px;
+
+    @include breakpoint(400px) {
+        grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    }
 
     @include breakpoint(medium) {
         gap: 24px;
+    }
+
+    @include breakpoint(large) {
+        gap: 32px;
     }
 }
 
@@ -20,7 +27,8 @@
 
     transition: border-color 200ms, box-shadow 200ms;
 
-    &:hover {
+    &:hover,
+    &:focus-within {
         border-color: $primary-color;
         box-shadow: 0 10px 20px -10px rgba($primary-color, .5);
     }
@@ -49,6 +57,10 @@
         right: -2px;
         bottom: -2px;
         left: -2px;
+    }
+
+    &:focus {
+        outline: none;
     }
 }
 

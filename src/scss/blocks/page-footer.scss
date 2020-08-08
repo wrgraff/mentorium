@@ -1,0 +1,39 @@
+.page-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 24px 0 0;
+}
+
+.page-footer__text {
+    margin-right: 40px;
+
+    font-size: 14px;
+    font-weight: 300;
+
+    a {
+        color: $black-color;
+        border-bottom: 1px solid;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+
+    p + p {
+        margin-top: 4px;
+
+        @include breakpoint(medium) {
+            margin-top: 10px;
+        }
+    }
+}
+
+.page-footer__github {
+    margin-top: 16px;
+}

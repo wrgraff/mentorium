@@ -3,5 +3,13 @@
 }
 
 .page-header__heading {
-    padding-right: 50%;
+    margin: 0;
+
+    @include breakpoint(medium) {
+        padding-right: 33%;
+    }
+
+    @include breakpoint(large) {
+        padding-right: 50%;
+    }
 }
