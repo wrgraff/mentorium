@@ -1,0 +1,21 @@
+.page-article {
+    display: grid;
+    gap: 24px;
+
+    @include breakpoint(large) {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 32px;
+    }
+}
+
+.page-article__content {
+    @include breakpoint(large) {
+        grid-column: 1 / 6;
+    }
+}
+
+.page-article__aside {
+    @include breakpoint(large) {
+        grid-column: -3 / -1;
+    }
+}

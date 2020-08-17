@@ -1,0 +1,46 @@
+.button {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 14px 26px;
+
+    color: $primary-color;
+    background-color: $gray-100-color;
+    border: 2px solid transparent;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    text-decoration: none;
+
+    transition: background-color 200ms, transform 200ms $transition-outback;
+}
+
+.button::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+.button:hover {
+    color: $primary-color;
+    background-color: $gray-200-color;
+}
+
+.button:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, .3);
+}
+
+.button:active {
+    border-color: transparent;
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.button[disabled] {
+    opacity: .5;
+    background-color: $gray-100-color;
+}

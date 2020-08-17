@@ -26,3 +26,4 @@ $unicode-ranges: (
 @include font-face($font-family, '../fonts/ubuntu-light', 300, normal);
 @include font-face($font-family, '../fonts/ubuntu-light-italic', 300, italic);
 @include font-face($font-family-monospace, '../fonts/ubuntu-mono-regular', 400, normal);
+@include font-face($font-family-monospace, '../fonts/ubuntu-mono-bold', 700, normal);

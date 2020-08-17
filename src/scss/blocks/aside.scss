@@ -1,0 +1,14 @@
+.aside {
+    padding-top: 8px;
+}
+
+.aside__text {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.aside__button {
+    .aside__text + & {
+        margin-top: 20px;
+    }
+}

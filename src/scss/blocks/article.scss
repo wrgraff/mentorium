@@ -1,0 +1,115 @@
+.article {
+    font-size: 18px;
+
+    @include breakpoint(medium) {
+        font-size: 20px;
+    }
+
+    // Headings
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 20px;
+
+        &:not(:first-child) {
+            margin-top: 24px;
+
+            @include breakpoint(large) {
+                margin-top: 40px;
+            }
+        }
+    }
+
+    // Paragraphs
+    p {
+        margin-bottom: 20px;
+    }
+
+    // Lists
+    ul,
+    ol {
+        margin: 0 0 28px;
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            position: relative;
+
+            &::before {
+                content: '';
+
+                position: absolute;
+                top: 14px;
+                right: calc(100% + 10px);
+
+                width: 16px;
+                height: 3px;
+
+                background-color: $primary-color;
+
+                font-family: $font-family-monospace;
+                font-size: 18px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    ol {
+        counter-reset: ol;
+        list-style: none;
+
+        li {
+            counter-increment: ol;
+            position: relative;
+
+            &::before {
+                content: '0' counter(ol);
+
+                position: absolute;
+                top: 4px;
+                right: calc(100% + 10px);
+
+                color: $primary-color;
+
+                font-family: $font-family-monospace;
+                font-size: 18px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    li + li {
+        margin-top: 8px;
+    }
+
+    // Blockquotes
+    blockquote {
+        margin: 0 0 20px;
+        padding: 20px 28px;
+
+        background-color: $gray-100-color;
+        border-left: 4px solid $primary-color;
+        border-radius: 6px;
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Code
+    code {
+        display: block;
+        margin: 0 0 20px;
+        padding: 20px 28px;
+
+        color: $white-color;
+        background-color: $gray-700-color;
+        border-radius: 5px;
+
+        font-family: $font-family-monospace;
+    }
+}

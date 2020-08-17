@@ -19,16 +19,14 @@
         <h1 class="page-header__heading">{{ title }}</h1>
     </header>
 
-    <main class="page__main page-main">
-        {{ content }}
-    </main>
+    {{ content }}
 
     <footer class="page__footer page-footer">
         <div class="page-footer__text">
             <p>Site created by <a href="https://frontend-design.ru/" class="page-footer__link" rel="noreferrer">Artur Trifonov</a></p>
             <p>Logo icon created by Slowinski Paweł</p>
         </div>
-        <a href="" class="page-footer__github" rel="noreferrer">View on GitHub</a>
+        <a href="{{ global.github }}" class="page-footer__github" target="_blank" rel="noreferrer">View on GitHub</a>
     </footer>
 </body>
 </html>
