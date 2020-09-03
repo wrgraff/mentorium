@@ -1,0 +1,27 @@
+<section class="articles">
+    {%- for article in articleslist %}
+        <article class="articles__item">
+            <h2 class="articles__heading">
+                <a href="{{ article.url }}" class="articles__link">
+                    {{ article.data.title }}
+                </a>
+            </h2>
+            
+            <p class="articles__text">
+                {{ article.data.description }}
+            </p>
+
+            <h3 class="visually-hidden">Теги</h3>
+            <ul class="articles__tags tags">
+                {%- for tag in article.data.tags %}
+                    {%- if collections.tagsList.indexOf(tag) != -1 -%}
+                        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                        <li class="tags__item">
+                            <a href="{{ tagUrl | url }}" class="tags__link">{{tag}}</a>
+                        </li>
+                    {%- endif -%}
+                {%- endfor %}
+            </ul>
+        </article>
+    {%- endfor %}
+</section>

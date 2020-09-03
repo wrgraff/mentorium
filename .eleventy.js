@@ -1,9 +1,7 @@
 module.exports = (function(eleventyConfig) {
-    eleventyConfig.addFilter('getlink', function(path) {
-        return '0 KB';
-    });
+    eleventyConfig.setDataDeepMerge(true);
 
-    eleventyConfig.addCollection("tagList", function(collection) {
+    eleventyConfig.addCollection("tagsList", function(collection) {
         let tagSet = new Set();
         collection.getAll().forEach(function(item) {
             if( "tags" in item.data ) {
@@ -13,9 +11,8 @@ module.exports = (function(eleventyConfig) {
                     switch(item) {
                         // this list should match the `filter` list in tags.njk
                         case "all":
-                        case "nav":
-                        case "post":
-                        case "posts":
+                        case "article":
+                        case "articles":
                         return false;
                     }
             

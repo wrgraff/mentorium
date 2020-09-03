@@ -84,7 +84,7 @@ const watch = () => {
     gulp.watch('src/scss/**/*.scss', gulp.series(scss));
     gulp.watch('src/img/**/*{jpg,png,svg}', gulp.series(img));
     gulp.watch('src/fonts/**/*{woff,woff2}', gulp.series(fonts));
-    gulp.watch('src/**/*{html,njk,md,liquid}', gulp.series(render, reload));
+    gulp.watch('src/**/*{html,njk,md,njk}', gulp.series(render, reload));
 };
 exports.watch = watch;
 

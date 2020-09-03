@@ -13,3 +13,9 @@
 .tags__item {
     margin-right: 12px;
 }
+
+.tags__link {
+    &:hover {
+        color: $black-color;
+    }
+}

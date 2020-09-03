@@ -76,5 +76,8 @@
 }
 
 .articles__tags {
+    position: relative;
+    z-index: 2;
+
     margin: auto 0 0;
 }

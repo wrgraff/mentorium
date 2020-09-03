@@ -1,10 +1,10 @@
 ---
-layout: layout.liquid
+layout: layout.njk
 ---
 
 <main class="page__main page-article">
     <article class="page-article__content article">
-        {{ content }}
+        {{ content | safe }}
     </article>
 
     <aside class="page-article__aside aside">
