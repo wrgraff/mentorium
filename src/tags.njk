@@ -11,13 +11,13 @@ pagination:
     - tagsList
   addAllPagesToCollections: true
 layout: index.njk
-renderData:
-  title: Tagged “{{ tag }}”
 permalink: /tags/{{ tag }}/
+title: Помощь для учащихся на курсах по HTML и CSS от html academy
 ---
-<h1>Tagged “{{ tag }}”</h1>
+
+{% set activeTag = tag %}
+{% include 'nav.njk' %}
 
 {% set articleslist = collections[ tag ] %}
 {% include "articleslist.njk" %}
 
-<p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>

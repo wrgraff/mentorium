@@ -1,0 +1,43 @@
+.nav {
+    display: flex;
+
+    font-family: $font-family-monospace, monospace;
+    font-weight: 400;
+}
+
+.nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 6px 12px;
+
+    background-color: $gray-100-color;
+    border-radius: 5px;
+    list-style: none;
+}
+
+.nav__link {
+    display: block;
+    padding: 0 10px 2px;
+
+    color: $primary-color;
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    transition: background-color 200ms;
+
+    &:hover {
+        color: $primary-color;
+        background-color: $white-color;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+    }
+
+    .nav__item_active & {
+        color: $white-color;
+        background-color: $primary-color;
+    }
+}

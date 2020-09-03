@@ -16,31 +16,31 @@
     text-decoration: none;
 
     transition: background-color 200ms, transform 200ms $transition-outback;
-}
 
-.button::-moz-focus-inner {
-    border-style: none;
-    padding: 0;
-}
+    &::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
 
-.button:hover {
-    color: $primary-color;
-    background-color: $gray-200-color;
-}
+    &:hover {
+        color: $primary-color;
+        background-color: $gray-200-color;
+    }
 
-.button:focus {
-    outline: none;
-    border-color: $primary-color;
-    box-shadow: 0 0 0 3px rgba($primary-color, .3);
-}
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, .3);
+    }
 
-.button:active {
-    border-color: transparent;
-    box-shadow: none;
-    transform: scale(.95);
-}
+    &:active {
+        border-color: transparent;
+        box-shadow: none;
+        transform: scale(.95);
+    }
 
-.button[disabled] {
-    opacity: .5;
-    background-color: $gray-100-color;
+    &[disabled] {
+        opacity: .5;
+        background-color: $gray-100-color;
+    }
 }

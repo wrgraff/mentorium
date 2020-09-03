@@ -1,4 +1,6 @@
 <section class="articles">
+    <h2 class="visually-hidden">Статьи</h2>
+
     {%- for article in articleslist %}
         <article class="articles__item">
             <h2 class="articles__heading">
@@ -17,7 +19,7 @@
                     {%- if collections.tagsList.indexOf(tag) != -1 -%}
                         {% set tagUrl %}/tags/{{ tag }}/{% endset %}
                         <li class="tags__item">
-                            <a href="{{ tagUrl | url }}" class="tags__link">{{tag}}</a>
+                            <a href="{{ tagUrl | url }}" class="tags__link">{{ tag }}</a>
                         </li>
                     {%- endif -%}
                 {%- endfor %}

@@ -1,0 +1,11 @@
+<h2 class="visually-hidden">Теги</h2>
+<nav class="page-main__nav nav">
+    <ul class="nav__list">
+        {% for tag in collections.tagsList %}
+            {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+            <li class="{{ "nav__item nav__item_active" if activeTag === tag else "nav__item" }}">
+                <a href="{{ tagUrl | url }}" class="nav__link">{{ tag }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

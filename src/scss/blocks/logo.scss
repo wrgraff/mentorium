@@ -1,12 +1,20 @@
 .logo {
-    display: flex;
+    display: inline-flex;
+    padding: 8px;
 
     color: $gray-700-color;
+    border: 2px solid transparent;
+    border-radius: 5px;
 
     font-size: 24px;
 
     &:hover {
         color: $primary-color;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
     }
 }
 

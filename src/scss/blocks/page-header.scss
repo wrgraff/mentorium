@@ -1,5 +1,5 @@
 .page-header__logo {
-    margin-bottom: 32px;
+    margin: -8px 0 24px -8px;
 }
 
 .page-header__heading {
@@ -10,6 +10,6 @@
     }
 
     @include breakpoint(large) {
-        padding-right: 50%;
+        padding-right: 46%;
     }
 }

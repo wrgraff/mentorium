@@ -3,19 +3,28 @@
     flex-wrap: wrap;
     padding: 0;
 
-    color: $primary-color;
     list-style: none;
 
     font-family: $font-family-monospace, monospace;
     font-weight: 400;
 }
 
-.tags__item {
-    margin-right: 12px;
-}
-
 .tags__link {
+    padding: 2px 4px 4px;
+
+    color: $primary-color;
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    transition: background-color 200ms;
+
     &:hover {
-        color: $black-color;
+        color: $primary-color;
+        background-color: $gray-200-color;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
     }
 }

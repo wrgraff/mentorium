@@ -59,8 +59,13 @@
         left: -2px;
     }
 
+    &:hover {
+        color: $primary-color;
+    }
+
     &:focus {
         outline: none;
+        color: $primary-color;
     }
 }
 
@@ -79,5 +84,5 @@
     position: relative;
     z-index: 2;
 
-    margin: auto 0 0;
+    margin: auto auto 0 -6px;
 }

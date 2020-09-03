@@ -3,5 +3,7 @@ layout: index.njk
 title: Помощь для учащихся на курсах по HTML и CSS от html academy
 ---
 
+{% include 'nav.njk' %}
+
 {% set articleslist = collections.articles %}
-{% include "articleslist.njk" %}
+{% include 'articleslist.njk' %}
