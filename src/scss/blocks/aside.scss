@@ -2,6 +2,17 @@
     padding-top: 8px;
 }
 
+.aside__author {
+    margin-bottom: 32px;
+}
+
+.aside__additional {
+    .aside__author + & {
+        padding-top: 32px;
+        border-top: 1px solid $gray-200-color;
+    }
+}
+
 .aside__text {
     font-size: 18px;
     font-weight: 400;

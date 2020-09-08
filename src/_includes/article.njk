@@ -8,8 +8,36 @@ layout: layout.njk
     </article>
 
     <aside class="page-article__aside aside">
-        <p class="aside__text">Нашли что поправить или дополнить?</p>
-        <p class="aside__text">Вперед!</p>
-        <a href="{{ global.github }}" class="aside__button button" target="_blank">Mentorium на GitHub</a>
+        <h2 class="visually-hidden">Дополнительно</h2>
+
+        {% if author %}
+            <div class="aside__author author">
+                <h3 class="author__heading">Автор:</h3>
+
+                <picture class="author__img">
+                    <source
+                        srcset="/img/avatars/{{ author }}.webp 1x,
+                                /img/avatars/{{ author }}@2x.webp 2x"
+                        type="image/webp"
+                    />
+                    <img
+                        src="/img/avatars/{{ author }}.jpg"
+                        srcset="/img/avatars/{{ author }}@2x.jpg 2x"
+                        alt=""
+                        width="80"
+                        height="80"
+                    >
+                </picture>
+
+                <p class="author__name">{{ authors[author].name }}</p>
+                <a href="{{ authors[author].link }}" class="author__link" target="_blank">{{ authors[author].site }}</a>
+            </div>
+        {% endif %}
+
+        <div class="aside__additional">
+            <p class="aside__text">Нашли что поправить или дополнить?</p>
+            <p class="aside__text">Вперед!</p>
+            <a href="{{ global.github }}" class="aside__button button" target="_blank">Mentorium на GitHub</a>
+        </div>
     </aside>
 </main>

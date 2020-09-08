@@ -1,0 +1,36 @@
+.author {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: min-content 1fr 1fr;
+    gap: 8px 16px;
+}
+
+.author__heading {
+    grid-column: 2 / -1;
+    margin: 0;
+
+    color: $gray-500-color;
+
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.author__img {
+    grid-row: span 2;
+
+    img {
+        display: block;
+        border-radius: 40px;
+    }
+}
+
+.author__name {
+    align-self: end;
+    margin: 0;
+    font-weight: 400;
+}
+
+.author__link {
+    align-self: start;
+    font-weight: 400;
+}

@@ -1,6 +1,7 @@
 ---
 title: 'Часто используемые для классов слова'
 description: 'Подборка часто используемых слов от yoksel'
+author: artur-trifonov
 tags:
     - css
 ---
