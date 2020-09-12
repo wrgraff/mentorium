@@ -1,0 +1,124 @@
+$video-ratio-padding: 56.45%;
+
+.video {
+    position: relative;
+    padding-bottom: $video-ratio-padding;
+
+    &:not(:first-child) {
+        margin-top: 24px;
+    }
+}
+
+.video_labeled {
+    &:not(:last-child) {
+        margin-bottom: 44px;
+    }
+
+    // Correct top margin collapsing in article headings
+    & + h2,
+    & + h3,
+    & + h4,
+    & + h5,
+    & + h6 {
+        padding-top: 28px;
+    }
+}
+
+.video__link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+
+    img {
+        display: block;
+
+        border: 2px solid $gray-900-color;
+        border-radius: 6px;
+
+        transition: border 200ms;
+    }
+
+    .video:hover & {
+        img {
+            border-color: $secondary-color;
+        }
+    }
+
+    .video:focus-within & {
+        outline: none;
+
+        img {
+            border-color: $primary-color;
+            box-shadow: 0 0 0 4px rgba($primary-color, .3);
+        }
+    }
+}
+
+.video__frame {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: 2px solid $gray-900-color;
+    border-radius: 6px;
+}
+
+.video__label {
+    height: 24px;
+    margin-top: 4px;
+    margin-bottom: 0;
+    padding-left: 4px;
+    overflow: hidden;
+
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.video__ico {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+.video__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: none;
+    width: 100%;
+
+    background-color: transparent;
+    border: none;
+
+    &::after {
+        content: url('../img/ico/play.svg');
+
+        display: block;
+        margin: auto;
+
+        transition: transform 200ms cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    &:hover::after {
+        transform: scale(1.3);
+    }
+
+    .video_enabled & {
+        display: flex;
+    }
+}
