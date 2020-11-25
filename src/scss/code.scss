@@ -24,6 +24,7 @@ pre[class*='language-'] {
 }
 
 pre[class*='language-'] {
+    overflow-x: auto;
     margin: 0 0 20px;
     padding: 20px 28px;
 
@@ -72,7 +73,6 @@ pre[class*='language-'] {
     .language-css &.string,
     .style &.string {
         color: #9a6e3a;
-        background: hsla(0, 0%, 100%, .5);
     }
 
     &.atrule,

@@ -1,5 +1,6 @@
 .page-article {
     display: grid;
+    grid-template-columns: 100%;
     gap: 24px;
 
     @include breakpoint(large) {

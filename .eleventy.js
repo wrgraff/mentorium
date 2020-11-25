@@ -31,6 +31,25 @@ module.exports = (function(eleventyConfig) {
         return [...tagSet];
     });
 
+    eleventyConfig.addTransform('articleImgs', (content, outputPath) => {
+        const articles = /articles\/([a-zA-Z0-9_-]+)\/index\.html/i;
+        const imgs = /\<img src\=\"([a-zA-Z0-9_-]+).(.*?)" (.*?)\>/ig;
+
+        if (outputPath && outputPath.match(articles)) {
+            content = content.replace(imgs, (match, p1, p2, p3) => {
+                return (
+                    `<a href="${p1}.${p2}" class="img">
+                        <picture>
+                            <source srcset="${p1}.webp" type="image/webp" />
+                            <img src="${p1}.${p2}" class="img__picture" ${p3} />
+                        </picture>
+                    </a>`
+                );
+            });
+        }
+        return content;
+    });
+
     eleventyConfig.addTransform('lazyYouTube', (content, outputPath) => {
         const articles = /articles\/([a-zA-Z0-9_-]+)\/index\.html/i;
         const iframes = /\<iframe src\=\"https\:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9_-]+)\"(.*?)\>\<\/iframe>/ig;

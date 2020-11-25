@@ -1,0 +1,19 @@
+.img {
+    display: block;
+    overflow: hidden;
+
+    border: 2px solid $gray-900-color;
+    border-radius: 6px;
+
+    transition: border-color 200ms;
+
+    &:hover {
+        border-color: $secondary-color;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 4px rgba($primary-color, .3);
+    }
+}
