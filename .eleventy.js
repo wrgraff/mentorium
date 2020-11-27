@@ -34,15 +34,27 @@ module.exports = (function(eleventyConfig) {
 
     eleventyConfig.addTransform('articleImgs', (content, outputPath) => {
         const articles = /articles\/([a-zA-Z0-9_-]+)\/index\.html/i;
-        const imgs = /\<img src\=\"([a-zA-Z0-9_-]+).(.*?)" (.*?)\>/ig;
+        const imgs = /\<img src\=\"([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+).(.*?)" (.*?)\>/ig;
 
         if (outputPath && outputPath.match(articles)) {
-            content = content.replace(imgs, (match, p1, p2, p3) => {
+            content = content.replace(imgs, (match, p1, p2, p3, p4) => {
                 return (
-                    `<a href="${p1}.${p2}" class="img">
+                    `<a href="${p1}/${p2}.png" class="img">
                         <picture>
-                            <source srcset="${p1}.webp" type="image/webp" />
-                            <img src="${p1}.${p2}" class="img__picture" ${p3} />
+                            <source
+                                srcset="${p1}/${p2}-small.webp 1x, ${p1}/${p2}-small@2x.webp 2x"
+								media="(max-width: 768px)"
+								type="image/webp" />
+                            <source
+                                srcset="${p1}/${p2}-large.webp 1x, ${p1}/${p2}-large@2x.webp 2x"
+                                type="image/webp"
+                            />
+                            <img
+                                src="${p1}/${p2}-large.${p3}"
+                                srcset="${p1}/${p2}-large@2x.${p3} 2x"
+                                class="img__picture"
+                                ${p4}
+                            />
                         </picture>
                     </a>`
                 );
