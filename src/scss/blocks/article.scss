@@ -1,5 +1,11 @@
 .article {
     font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        flex-basis: 100%;
+    }
 
     @include breakpoint(medium) {
         font-size: 20px;
