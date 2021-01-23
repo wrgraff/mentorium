@@ -1,6 +1,7 @@
 ---
 title: 'git workflow, ты что такой странный?'
 description: 'Пояснения почему процесс работы с гитом такой сложный на втором курсе, зачем это делается и почему это важно'
+author: artur-trifonov
 tags:
     - git
     - workflow
