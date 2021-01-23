@@ -56,7 +56,13 @@ const optimizeArticlesImg = () => {
         .pipe(gulp.dest('dist/articles'))
         .pipe(browserSync.stream());
 };
+
+const delArticlesImgs = () => {
+    return del('dist/articles/**/*.{jpg,png,svg,webp}');
+};
+
 const articlesImg = gulp.series(
+    delArticlesImgs,
     copyArticlesImg,
     gulp.parallel(
         cutArticlesImgLarge,
