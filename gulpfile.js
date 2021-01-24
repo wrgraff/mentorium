@@ -80,10 +80,10 @@ const scss = () => {
         .pipe(sass())
         .pipe(postcss([ autoprefixer() ]))
         .pipe(gulp.dest('dist/css/'))
+        .pipe(csso())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('dist/css/'))
         .pipe(browserSync.stream());
-        // .pipe(csso())
-        // .pipe(rename({ suffix: '.min' }))
-        // .pipe(gulp.dest('dist/css/'))
 };
 exports.scss = scss;
 
@@ -91,10 +91,10 @@ const js = () => {
     return gulp.src('src/js/*.js')
         .pipe(babel())
         .pipe(gulp.dest('dist/js/'))
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('dist/static/js'))
         .pipe(browserSync.stream());
-        // .pipe(uglify())
-        // .pipe(rename({ suffix: '.min' }))
-        // .pipe(gulp.dest('dist/static/js'))
 };
 exports.js = js;
 
