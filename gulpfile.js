@@ -160,8 +160,8 @@ const build = gulp.series(
         js,
         fonts,
         img,
-        articlesImg
     ),
+    articlesImg
 );
 exports.build = build;
 
