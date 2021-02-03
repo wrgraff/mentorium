@@ -91,8 +91,8 @@ const js = () => {
     return gulp.src('src/js/*.js')
         .pipe(babel())
         .pipe(gulp.dest('dist/js/'))
-        .pipe(uglify())
-        .pipe(rename({ suffix: '.min' }))
+        // .pipe(uglify())
+        // .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('dist/static/js'))
         .pipe(browserSync.stream());
 };
