@@ -3,17 +3,17 @@
 
     {%- for article in articleslist %}
         <article class="articles__item">
-            <h2 class="articles__heading">
+            <h3 class="articles__heading">
                 <a href="{{ article.url }}" class="articles__link">
                     {{ article.data.title }}
                 </a>
-            </h2>
+            </h3>
             
             <p class="articles__text">
                 {{ article.data.description }}
             </p>
 
-            <h3 class="visually-hidden">Теги</h3>
+            <h4 class="visually-hidden">Теги</h4>
             <ul class="articles__tags tags">
                 {%- for tag in article.data.tags %}
                     {%- if collections.tagsList.indexOf(tag) != -1 -%}
