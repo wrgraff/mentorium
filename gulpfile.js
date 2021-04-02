@@ -22,6 +22,7 @@ const cutArticlesImgLarge = () => {
         .pipe(rename({ suffix: `-large` }))
         .pipe(gulp.dest('dist/articles'));
 };
+exports.cutArticlesImgLarge = cutArticlesImgLarge;
 const cutArticlesImgLarge2x = () => {
     return gulp.src('dist/articles/**/*.{jpg,png}', {base: 'dist/articles'})
         .pipe(imageResize({width: 734 * 2}))
@@ -161,7 +162,6 @@ const build = gulp.series(
         fonts,
         img,
     ),
-    articlesImg
 );
 exports.build = build;
 

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build"
+    "start": "eleventy --serve  --quiet",
+    "build": "eleventy && gulp build"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
     "del": "^5.1.0",
+    "eleventy-plugin-sass": "^1.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-csso": "^4.0.1",

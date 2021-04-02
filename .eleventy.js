@@ -1,8 +1,16 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const pluginSass = require('eleventy-plugin-sass');
 
 module.exports = (function(eleventyConfig) {
     eleventyConfig.addPlugin(syntaxHighlight);
+    eleventyConfig.addPlugin(pluginSass, {
+        watch: ['src/scss/style.scss', '!node_modules/**'],
+        outputDir: 'dist/css'
+    });
+    eleventyConfig.addWatchTarget('src/scss/');
     eleventyConfig.setDataDeepMerge(true);
+
+    eleventyConfig.addPassthroughCopy('src/fonts');
     eleventyConfig.addPassthroughCopy('src/**/*.(html|gif|jpg|png|svg|mp4|webm|zip)');
 
     eleventyConfig.addCollection('tagsList', function(collection) {
@@ -28,7 +36,7 @@ module.exports = (function(eleventyConfig) {
                 }
             }
         });
-      
+
         return [...tagSet];
     });
 
@@ -39,23 +47,12 @@ module.exports = (function(eleventyConfig) {
         if (outputPath && outputPath.match(articles)) {
             content = content.replace(imgs, (match, p1, p2, p3, p4) => {
                 return (
-                    `<a href="${p1}/${p2}.png" class="img">
-                        <picture>
-                            <source
-                                srcset="${p1}/${p2}-small.webp 1x, ${p1}/${p2}-small@2x.webp 2x"
-								media="(max-width: 768px)"
-								type="image/webp" />
-                            <source
-                                srcset="${p1}/${p2}-large.webp 1x, ${p1}/${p2}-large@2x.webp 2x"
-                                type="image/webp"
-                            />
-                            <img
-                                src="${p1}/${p2}-large.${p3}"
-                                srcset="${p1}/${p2}-large@2x.${p3} 2x"
-                                class="img__picture"
-                                ${p4}
-                            />
-                        </picture>
+                    `<a href="${p1}/${p2}.${p3}" class="img">
+                        <img
+                            src="${p1}/${p2}.${p3}"
+                            class="img__picture"
+                            ${p4}
+                        />
                     </a>`
                 );
             });
@@ -107,6 +104,7 @@ module.exports = (function(eleventyConfig) {
         dir: {
             input: 'src',
             output: 'dist'
-        }
+        },
+        passthroughFileCopy: true
     };
 });
