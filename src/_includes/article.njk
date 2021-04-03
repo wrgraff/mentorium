@@ -11,21 +11,37 @@ layout: layout.njk
         <h2 class="visually-hidden">Дополнительно</h2>
 
         {% if author %}
+            {% set authorData = null %}
+            {% for person in collections.people %}
+                {% if person.fileSlug == author %}
+                    {% set authorData = person.data %}
+                {% endif %}
+            {% endfor %}
+
             <div class="aside__author author">
                 <h3 class="author__heading">Автор:</h3>
 
-                <picture class="author__img">
-                    <img
-                        src="/people/{{ author }}/avatar.jpg"
-                        srcset="/people/{{ author }}/avatar@2x.jpg 2x"
-                        alt=""
-                        width="80"
-                        height="80"
-                    >
-                </picture>
+                {% if authorData.photo %}
+                    <p class="author__img">
+                        <img
+                            src="/people/{{ author }}/avatar.jpg"
+                            srcset="/people/{{ author }}/avatar@2x.jpg 2x"
+                            alt="{{ authorData.name }}"
+                            width="80"
+                            height="80"
+                        >
+                    </p>
+                {% endif %}
 
-                <p class="author__name">{{ collections.people.[author].name }}</p>
-                <a href="{{ collections.people.[author].url }}" class="author__link" target="_blank">{{ collections.people.[author].site }}</a>
+                <p class="author__name">
+                    {{ authorData.name }}
+                </p>
+
+                {% if authorData.url and authorData.site %}
+                    <a href="{{ authorData.url }}" class="author__link" target="_blank" rel="noreferrer">
+                        {{ authorData.site }}
+                    </a>
+                {% endif %}
             </div>
         {% endif %}
 
