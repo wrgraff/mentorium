@@ -2,11 +2,12 @@ const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 
 module.exports = (function(eleventyConfig) {
     eleventyConfig.addPlugin(syntaxHighlight);
-    eleventyConfig.addWatchTarget('src/scss/');
     eleventyConfig.setDataDeepMerge(true);
 
+    eleventyConfig.addPassthroughCopy('src/js');
     eleventyConfig.addPassthroughCopy('src/fonts');
     eleventyConfig.addPassthroughCopy('src/**/*.(html|gif|jpg|png|svg|mp4|webm|zip)');
+    eleventyConfig.addWatchTarget('src/js');
 
     eleventyConfig.addCollection('tagsList', function(collection) {
         let tagSet = new Set();
@@ -92,6 +93,20 @@ module.exports = (function(eleventyConfig) {
                     );
                 };
             });
+        }
+        return content;
+    });
+
+    eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
+        if(outputPath && outputPath.endsWith('.html')) {
+            let htmlmin = require('html-minifier');
+            let result = htmlmin.minify(
+                content, {
+                    removeComments: true,
+                    collapseWhitespace: true
+                }
+            );
+            return result;
         }
         return content;
     });
