@@ -1,12 +1,7 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const pluginSass = require('eleventy-plugin-sass');
 
 module.exports = (function(eleventyConfig) {
     eleventyConfig.addPlugin(syntaxHighlight);
-    eleventyConfig.addPlugin(pluginSass, {
-        watch: ['src/scss/style.scss', '!node_modules/**'],
-        outputDir: 'dist/css'
-    });
     eleventyConfig.addWatchTarget('src/scss/');
     eleventyConfig.setDataDeepMerge(true);
 
@@ -25,6 +20,7 @@ module.exports = (function(eleventyConfig) {
                         case 'all':
                         case 'article':
                         case 'articles':
+                        case 'people':
                         return false;
                     }
             

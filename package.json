@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve  --quiet",
-    "build": "eleventy && gulp build"
+    "watch:sass": "sass  --no-source-map --watch src/scss:dist/css",
+    "watch:eleventy": "eleventy --serve",
+    "build:sass": "sass  --no-source-map src/scss:dist/css",
+    "build:eleventy": "eleventy",
+    "start": "npm-run-all build:sass --parallel watch:*",
+    "build": "npm-run-all build:sass build:eleventy && gulp postbuild"
   },
   "keywords": [],
   "author": "",
@@ -16,8 +20,9 @@
     "@babel/core": "^7.11.6",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
+    "cross-env": "^7.0.3",
+    "cssnano": "^4.1.10",
     "del": "^5.1.0",
-    "eleventy-plugin-sass": "^1.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-csso": "^4.0.1",
@@ -25,7 +30,10 @@
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.1.0",
-    "gulp-webp": "^4.0.1"
+    "gulp-webp": "^4.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.9",
+    "sass": "^1.32.8"
   },
   "dependencies": {
     "gulp-image-resize": "^0.13.1",
