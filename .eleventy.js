@@ -3,7 +3,11 @@ const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 module.exports = (function(eleventyConfig) {
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.setDataDeepMerge(true);
+
+    eleventyConfig.addPassthroughCopy('src/js');
+    eleventyConfig.addPassthroughCopy('src/fonts');
     eleventyConfig.addPassthroughCopy('src/**/*.(html|gif|jpg|png|svg|mp4|webm|zip)');
+    eleventyConfig.addWatchTarget('src/js');
 
     eleventyConfig.addCollection('tagsList', function(collection) {
         let tagSet = new Set();
@@ -17,6 +21,7 @@ module.exports = (function(eleventyConfig) {
                         case 'all':
                         case 'article':
                         case 'articles':
+                        case 'people':
                         return false;
                     }
             
@@ -28,7 +33,7 @@ module.exports = (function(eleventyConfig) {
                 }
             }
         });
-      
+
         return [...tagSet];
     });
 
@@ -39,23 +44,12 @@ module.exports = (function(eleventyConfig) {
         if (outputPath && outputPath.match(articles)) {
             content = content.replace(imgs, (match, p1, p2, p3, p4) => {
                 return (
-                    `<a href="${p1}/${p2}.png" class="img">
-                        <picture>
-                            <source
-                                srcset="${p1}/${p2}-small.webp 1x, ${p1}/${p2}-small@2x.webp 2x"
-								media="(max-width: 768px)"
-								type="image/webp" />
-                            <source
-                                srcset="${p1}/${p2}-large.webp 1x, ${p1}/${p2}-large@2x.webp 2x"
-                                type="image/webp"
-                            />
-                            <img
-                                src="${p1}/${p2}-large.${p3}"
-                                srcset="${p1}/${p2}-large@2x.${p3} 2x"
-                                class="img__picture"
-                                ${p4}
-                            />
-                        </picture>
+                    `<a href="${p1}/${p2}.${p3}" class="img">
+                        <img
+                            src="${p1}/${p2}.${p3}"
+                            class="img__picture"
+                            ${p4}
+                        />
                     </a>`
                 );
             });
@@ -103,10 +97,25 @@ module.exports = (function(eleventyConfig) {
         return content;
     });
 
+    eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
+        if(outputPath && outputPath.endsWith('.html')) {
+            let htmlmin = require('html-minifier');
+            let result = htmlmin.minify(
+                content, {
+                    removeComments: true,
+                    collapseWhitespace: true
+                }
+            );
+            return result;
+        }
+        return content;
+    });
+
     return {
         dir: {
             input: 'src',
             output: 'dist'
-        }
+        },
+        passthroughFileCopy: true
     };
 });
